@@ -18,6 +18,6 @@ export default {
       },
     ],
   },
-  testMatch: ['**/__tests__/**/*.test.ts', '**/?(*.)+(spec|test).ts'],
+  testMatch: ['**/tests/**/*.test.ts', '**/?(*.)+(spec|test).ts'],
   clearMocks: true,
 };
