@@ -22,6 +22,8 @@
   "type": "module",
   "devDependencies": {
     "@jest/globals": "^30.5.2",
+    "@swc/core": "^1.16.22",
+    "@swc/jest": "^0.2.39",
     "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",

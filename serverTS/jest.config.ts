@@ -1,15 +1,23 @@
-import { createDefaultEsmPreset } from 'ts-jest';
-
-/** @type {import('ts-jest').JestConfigWithTsJest} */
+/** @type {import('jest').Config} */
 export default {
-  ...createDefaultEsmPreset({
-    tsconfig: 'tsconfig.json',
-  }),
   testEnvironment: 'node',
   extensionsToTreatAsEsm: ['.ts'],
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
-  testMatch: ['**/tests/**/*.test.ts', '**/?(*.)+(spec|test).ts'],
+  transform: {
+    '^.+\\.tsx?$': [
+      '@swc/jest',
+      {
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+          },
+          target: 'es2023',
+        },
+      },
+    ],
+  },
+  testMatch: ['**/__tests__/**/*.test.ts', '**/?(*.)+(spec|test).ts'],
   clearMocks: true,
 };
