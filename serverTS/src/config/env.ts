@@ -4,6 +4,7 @@ loadDotenv({ quiet: true })
 
 // ENUMS
 const NODE_ENVS = ["development", "production", "test"] as const;
+const LOG_LEVELS = ["fatal", "error", "warn", "info", "debug", "trace", "silent"] as const;
 
 const envSchema = z.object({
     // SERVER
@@ -15,6 +16,9 @@ const envSchema = z.object({
     ORIGIN_URI: z.string().trim()
         .pipe(z.url({ protocol: /^https?$/, error: "CLIENT_URL must be a valid http(s) URL" }))
         .transform((value) => new URL(value).origin).optional(),
+
+    // LOGGER
+    LOG_LEVEL: z.enum(LOG_LEVELS).default("debug"),
 
     // JWT
     JWT_SECRET: z.string().min(32, "JWT_SECRET must be at least 32 characters"),
