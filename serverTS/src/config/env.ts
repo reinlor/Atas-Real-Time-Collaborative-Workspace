@@ -15,7 +15,7 @@ const envSchema = z.object({
     ).default(3000),
     ORIGIN_URI: z.string().trim()
         .pipe(z.url({ protocol: /^https?$/, error: "CLIENT_URL must be a valid http(s) URL" }))
-        .transform((value) => new URL(value).origin).optional(),
+        .transform((value) => new URL(value).origin).default("http://localhost:3000"),
 
     // LOGGER
     LOG_LEVEL: z.enum(LOG_LEVELS).default("debug"),

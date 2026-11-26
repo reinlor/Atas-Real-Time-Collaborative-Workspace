@@ -1,14 +1,10 @@
 import express, { Express } from "express";
 import helmet from "helmet";
-import cors from "cors";
+import { corsConfig } from "./config/cors.js";
 
 const app: Express = express();
 
-app.use(helmet())
-app.use(cors({
-    origin: [
-        'http://localhost:5173'
-    ]
-}))
+app.use(helmet());
+app.use(corsConfig);
 
 export default app;
