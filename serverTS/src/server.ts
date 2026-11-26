@@ -1,5 +1,6 @@
+import { env } from "./config/env.js";
 import app from "./app.js";
 
-app.listen(5000, () => {
+app.listen(env.PORT, () => {
     console.log("Server running successfully");
 })
