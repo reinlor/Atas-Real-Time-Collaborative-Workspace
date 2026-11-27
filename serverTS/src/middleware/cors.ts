@@ -1,4 +1,4 @@
-import { env } from "./env.js";
+import { env } from "../config/env.js";
 import cors, { type CorsOptions } from "cors";
 
 const allowedOrigins = env.ORIGIN_URI.split(",").map((origin) => origin.trim());
@@ -11,4 +11,4 @@ const corsOptions: CorsOptions = {
   maxAge: 600,
 };
 
-export const corsConfig = cors(corsOptions);
+export const corsMiddleware = cors(corsOptions);

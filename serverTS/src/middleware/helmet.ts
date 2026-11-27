@@ -1,5 +1,5 @@
 import helmet, { type HelmetOptions } from "helmet";
-import { env } from "./env.js";
+import { env } from "../config/env.js";
 
 const isProduction = env.NODE_ENV === "production";
 
@@ -22,4 +22,4 @@ export const helmetOptions: HelmetOptions = {
     : false,
 };
 
-export const helmetConfig = helmet(helmetOptions);
+export const helmetMiddleware = helmet(helmetOptions);

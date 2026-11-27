@@ -1,10 +1,10 @@
 import express, { Express } from "express";
-import { helmetConfig } from "./config/helmet.js";
-import { corsConfig } from "./config/cors.js";
+import { helmetMiddleware } from "./middleware/helmet.js";
+import { corsMiddleware } from "./middleware/cors.js";
 const app: Express = express();
 
-app.use(helmetConfig);
-app.use(corsConfig);
+app.use(helmetMiddleware);
+app.use(corsMiddleware);
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true, limit: "2mb" }));
 
